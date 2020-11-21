@@ -107,25 +107,31 @@ let intervalo = setInterval(() => {
       $('#modalTabla').modal('hide');
         edicion =true;
         asignaValores();
-        elementos = $('.animation');
-        agregar = $('#btnAgregar');
-        agregar.css('translate', '200px');
-        agregar.css('opacity', '0'); 
-        elementos.css('translate', '240px');              
-        elementos.removeClass('btnOculto');
-        elementos.removeAttr('disabled');        
+        agregar = document.querySelector('#btnAgregar');
+        elementos =  document.querySelectorAll('.animation');                  
+        agregar.style.transform =  "translate(200px)";
+        agregar.style.opacity ='0'; 
+        Array.prototype.forEach.call(elementos,(el)=>{
+          el.style.transform =  'translate(40px)';              
+          el.classList.remove('btnOculto');
+          el.removeAttribute('disabled');        
+        })
+        
+        
     }
     
     function desactivaModificar(params) {
       edicion =false;
-      elementos = $('.animation');
-      agregar = $('#btnAgregar');
-      agregar.css('animation-duration', '200ms');
-      agregar.css('translate','0');
-      agregar.css('opacity','1') ;        
-      elementos.css('translate', '0') ;
-      elementos.addClass('btnOculto');
-      elementos.attr('disabled', '');
+      agregar = document.querySelector('#btnAgregar');
+      elementos =  document.querySelectorAll('.animation');    
+      
+      agregar.style.transform ='translate(-89px)';
+      agregar.style.opacity = '1';        
+      Array.prototype.forEach.call(elementos,(el)=>{
+        el.style.transform = 'translate(-200px)';
+        el.classList.add('btnOculto');
+        el.setAttribute('disabled', '');
+      })
       limpiarCampos();
     }    
     function asignaValores(params) {
@@ -150,11 +156,10 @@ let intervalo = setInterval(() => {
             alinearPrimerColumna();  
         })
     }
-    function existe(valorBuscado) {
-      filas = $('#cuerpoTabla').find('tr');
+    function existe(valorBuscado) {      
       existeRegistro= false;      
-      Array.prototype.forEach.call(filas,(el)=>{
-        if(el.children[0].innerHTML==valorBuscado){
+      Array.prototype.forEach.call(tabla.rows().data(),(el)=>{
+        if(el[0]==valorBuscado){
             existeRegistro = true;
         }
       })        
