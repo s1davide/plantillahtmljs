@@ -2,38 +2,34 @@ var tabla;
 var edicion =false;
 let fila;
 
-let intervalo = setInterval(() => {
-    try {
-        cuerpoTabla =document.getElementById('cuerpoTabla')
-        let observadorMutaciones = new ObservadorMutaciones(cuerpoTabla, eventoFilas);
-        observadorMutaciones.crearMutacion();
-        margen = document.querySelector('nav').clientHeight +15
-        document.querySelector('#espacio').style = "margin-top: " + margen + "px"
-        eventoFilas();    
-        clearInterval(intervalo)    
-    } catch (error) {}    
-}, 100);
 
-    $(document).ready( function () {
-      tabla =$('#data_table').DataTable({
-            //para cambiar el lenguaje a español
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "sProcessing":"Procesando...",
-            }
-        });
-    });
+cuerpoTabla =document.getElementById('cuerpoTabla')
+let observadorMutaciones = new ObservadorMutaciones(cuerpoTabla, eventoFilas);
+observadorMutaciones.crearMutacion();
+eventoFilas();    
+
+  $(document).ready( function () {
+    tabla =$('#data_table').DataTable({
+          //para cambiar el lenguaje a español
+          "language": {
+              "lengthMenu": "Mostrar _MENU_ registros",
+              "zeroRecords": "No se encontraron resultados",
+              "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+              "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+              "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+              "sSearch": "Buscar:",
+              "oPaginate": {
+                  "sFirst": "Primero",
+                  "sLast":"Último",
+                  "sNext":"Siguiente",
+                  "sPrevious": "Anterior"
+              },
+              "sProcessing":"Procesando...",
+          }
+      });
+  });  
+
+
     function agregarRegistro(){
       if(!edicion){
         id =document.getElementById("id").value
@@ -77,7 +73,8 @@ let intervalo = setInterval(() => {
         limpiarCampos();
         desactivaModificar();
       }else {
-        $('#notificacion').toast('show');
+        $('#notificacion').css('z-index', '1');
+        $('#notificacion').toast('show');        
       }
     }
     
@@ -101,6 +98,7 @@ let intervalo = setInterval(() => {
     function borrarFila(params) {
         tabla.row(fila).remove().draw(false);
         $('#modalTabla').modal('hide');
+        desactivaModificar();
         eventoFilas();
     }
     function activaModificar(params) {
@@ -166,9 +164,9 @@ let intervalo = setInterval(() => {
       return existeRegistro;
     }
     function limpiarCampos(){
-      document.getElementById("id").value = ""
-      document.getElementById("nombre").value = ""
-      document.getElementById("apellido").value = ""
-      document.getElementById("ciudad").value = ""
-      document.getElementById("pais").value =""
+      document.getElementById("id").value = "";
+      document.getElementById("nombre").value = "";
+      document.getElementById("apellido").value = "";
+      document.getElementById("ciudad").value = "";
+      document.getElementById("pais").value ="";
     }

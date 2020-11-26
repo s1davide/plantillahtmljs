@@ -8,36 +8,10 @@ h1{
 tr{
     transition: 200ms;
 }
-
-.card-deck{
-    transition: 150ms;
-}
-.efecto{
-    transition: 150ms;
-}
-.card-deck:hover{    
-    transform: scale(1.02);
-}
-.efecto:hover{
-    transition: 200ms;
-    transform: scale(1.03);
-    user-select: none;
-}
-.efecto:active{
-    transform: scale(1.01);
-}
 .nav-link{
     color: white !important;
 }
-th{
-    transition: 200ms;
-}
-th:hover{
-    background-color: #ececec;
-}
-th:active{
-    background-color: #dedddd;
-}
+
 nav{
     position: fixed !important;
     z-index: 1;
@@ -52,21 +26,5 @@ nav{
 .navbar-toggler{
    background-color: white !important;
 }
-#data_table{
-    overflow-y: scroll;
-    height: 280px;
-}
 
-.btnOculto{        
-    opacity: 0 !important;
-}
-.animation{    
-    transform: translateX(-200px);    
-    transition: 200ms !important;   
-    animation-fill-mode: forwards;   
-}
-#btnAgregar{
-    transform: translateX(-89px);
-    transition: 200ms !important;   
-    animation-fill-mode: forwards;   
-}
+

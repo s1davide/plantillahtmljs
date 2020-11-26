@@ -1,0 +1,64 @@
+.contenedorTarjetas{
+    display: grid; 
+    justify-content: center; 
+    transition: 200ms;
+}
+.card-title{
+    text-overflow: ellipsis;    
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+.textoCuerpoTarjeta{
+    text-overflow: ellipsis;
+    overflow: hidden;    
+    line-height: 1;
+    -webkit-line-clamp: 6;
+    display: -webkit-box;    
+    max-width: 100%;
+    -webkit-box-orient: vertical;
+}
+.tarjetaPersonalizada{
+    
+}
+#inputFileCustom{
+    background-color: #76c8c8; 
+    border-radius: 0.25rem; 
+    padding: 3px;  
+    height: 38px; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    color: white;
+    font-weight: bold;
+    user-select: none;
+    transition: 200ms;
+}
+#inputFileCustom:hover{
+    box-shadow: 0px 0px 3px 2px #b7e0e0;
+}
+#inputFileCustom:active{
+    background-color:  #62cfcf;
+}
+#muestraImagen{
+   width: 200px;
+   min-height: 200px;
+   background-color: #bdb6b6;
+   background-size: cover;
+   display: flex;
+   vertical-align: middle;
+   align-items: center;
+   justify-content: center;font-weight: bold;
+   color: white;
+}
+#validaImagen{    
+    animation-fill-mode: backwards;    
+}
+@keyframes temblor{
+    0%{transform: rotateZ(-5deg)}
+    25%{transform: rotateZ(5deg)}
+    50%{transform: rotateZ(-5deg)}
+    75%{transform: rotateZ(5deg)}
+    100%{transform: rotateZ(-5deg)}    
+}

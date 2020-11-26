@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <script  src="/static/contenido/tarjetas/js/tarjetas.js"></script>
+    <link rel="stylesheet" href="/static/contenido/tarjetas/css/tarjetas.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Agregar tarjetas</h1>
+    
+    <div class="container ">
+        <div class="row d-flex justify-content-center">
+            <p>Tarjetas con título contenido y foto en el DOM</p>
+        </div>
+    <div class="row d-flex justify-content-center">
+        <button type="button" onclick="iniciaModal()" class="btn btn-primary mb-5">Agregar Tarjeta</button>
+    </div>
+    </div>
+    <div class="modal fade" id="modalTarjetas" ondrop="soltarArchivo(event)" ondragover="dragOver(event)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title " >Opciones Tabla</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="justify-content: center;">
+              <div class="container ">
+                <div class="row mb-3">
+                  <div id="inputFileCustom" onclick="document.querySelector('#inputFileCustom').nextElementSibling.click()">
+                  Seleccione una imagen local. clic o soltar.(Drag and drop)</div>
+                  <input class="form-control-file mb-3" style="visibility: hidden; position: absolute;" 
+                  type="file" value="" onchange="seleccionArchivo(this.files[0])" id="archivo">
+                </div>                
+                <div class="row">
+                  <input class="form-control mb-3"type="url" id="url-imagen" onkeyup="validaURL(this.value, record, null,'URL')" 
+                  oninput="validaURL(this.value, record, null,'URL')" placeholder="Ingrese URL imagen">
+                </div>                
+              </div>
+              <div class="d-flex align-items-center justify-content-center flex-column mb-3">
+                <div  class="text-center" id="validaImagen"></div>
+                <div class="text-center" id="muestraImagen">Previsualización Imagen</div>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioImage" id="imagenLocal" value="local" onchange="opcionImagen('local')" checked>
+                <label class="form-check-label" for="imagenLocal">
+                  Imagen Local
+                </label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="radioImage" id="imagenURL" value="URL" onchange="opcionImagen('URL')">
+                <label class="form-check-label" for="imagenURL">
+                  Imagen de URL
+                </label>
+              </div>
+              <form onsubmit="agregaTarjeta(); return false;">
+                <label for="inputTitutlo">Título de Tarjeta:</label>
+                <input class="form-control mb-3"type="text" id="inputTitulo" placeholder="Título tarjeta" required>
+                <label for="contenidoTarjeta">Contenido Tarjeta:</label>
+                <textarea class="form-control mb-3" id="contenidoTarjeta" placeholder="Ingrese el contenido del Cuerpo de la tarjeta" rows="3" required></textarea>
+                <div class="container d-flex justify-content-center">
+                  <button class="btn bg-danger mr-2" type="submit">Aceptar</button>
+                  <button class="btn bg-secondary" type="button" onclick="document.querySelector('#validaImagen').innerHTML =''; $('#modalTarjetas').modal('hide');">Cancelar</button>
+                </div>
+              </form>
+            </div>      
+          </div>
+        </div>
+      </div>
+      <!--=========================PLANTILLA TARJETA======================-->
+      <div class="plantillaTarjeta"  style="display: none;">
+        <img src="" style="height: 200px;" class="card-img-top" alt="...">
+        <div class="card-body" style="height: 160px">
+          <h5 class="card-title">Paisaje 3</h5>
+          <p class="card-text textoCuerpoTarjeta">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div> 
+      <!--=========================PLANTILLA TARJETA======================-->
+      <div class="container">
+        <div class="contenedorTarjetas" >
+          <!--class="col-lg-3 col-md-5 "-->
+          
+        </div>
+      </div>
+    
+</body>
+</html>
