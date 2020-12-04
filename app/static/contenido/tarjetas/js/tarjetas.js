@@ -12,7 +12,7 @@ contenedorTarjetas.style.gridAutoRows = "minmax("+anchoTarjetas+"px, auto)";
 contenedorTarjetas.style.gridColumnGap =espacioEntreColumnas+"px";
 contenedorTarjetas.style.gridRowGap = espacioEntreFilas+"px";
 
-visualViewport.onresize =  ()=>{
+window.onresize =  ()=>{
     organizaElementos();
 }
 

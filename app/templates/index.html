@@ -21,7 +21,7 @@
     <script src="{{url_for('static', filename =  'plugins/jQuery-3.3.1/jquery-3.3.1.min.js')}}"></script>
     <script src="{{url_for('static', filename =  'plugins/DataTables-1.10.22/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{url_for('static', filename =  'plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js')}}"></script>
-    <script type="module" src="{{url_for('static', filename =  'js/paginas.js')}}"></script>
+   <!-- <script type="module"   src="{{url_for('static', filename =  'js/paginas.js')}}"></script>-->
     
 
     <title>Página demo</title>
@@ -31,6 +31,12 @@
     let nav = document.querySelector('nav');
     let margen = nav.clientHeight +15; 
     document.querySelector('#contenido').style.marginTop =  margen + "px";    
+  </script>
+  <script>
+    let el = document.createElement('script');
+    el.src = "/static/js/paginas.js";
+    el.type = "module";
+    document.head.appendChild(el);
   </script>
     <nav class="navbar navbar-expand-lg navbar-light  text-white">      
         <a class="navbar-brand" style="color: white;  " >Logo</a>
